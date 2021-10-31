@@ -65,7 +65,7 @@ export const Cart = props => {
         </div>
       ) : (
         <div>
-          <h2>Cart is empty</h2>
+          <h1>Cart is empty</h1>
         </div>
       )}
       <ToastContainer
