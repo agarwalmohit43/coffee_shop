@@ -26,6 +26,8 @@ export const Cart = props => {
         </div>
       </h4></td>
       <td>
+        {item.qty}
+      </td><td>
         {item.price}
       </td>
 	  <td>{`${item.discount}%`}</td>
@@ -60,6 +62,7 @@ export const Cart = props => {
           <thead>
             <tr>
               <th>Name</th>
+              <th>Quantity</th>
               <th>Price</th>
               <th>Discount</th>
               <th>Action</th>
@@ -70,9 +73,12 @@ export const Cart = props => {
           <tbody>
             {renderList2}
           </tbody>
-        </table><div className="item" key={new Date().getTime()}>
-            <div>Total: {props.cartLists.total}</div>
-          </div><Link to="/print" class="ui right labeled icon button">
+        </table>
+        <br/>
+        <div className="item" key={new Date().getTime()}>
+            <h3>Total: {props.cartLists.total}</h3>
+          </div>
+          <br/><Link to="/print" class="ui right labeled icon button">
             <i class="right arrow icon"></i>
             Place order
           </Link>
