@@ -15,6 +15,7 @@ export const Cart = props => {
   const renderList = props.cartLists.items.map((item, index) => {
     return (
       <div className="item" key={index}>
+        <div className="right floated content">{item.priceAfterDiscount}</div>
         <div className="right floated content">{item.totalPrice}</div>
         <i
           className={`large middle aligned icon ${
@@ -40,6 +41,9 @@ export const Cart = props => {
           />
           <div className="description">
             {item.qty} * {item.price}
+          </div>
+          <div className="description">
+            Discount: {`${item.discount}%`}
           </div>
         </div>
       </div>
