@@ -11,20 +11,25 @@ import { BEVERAGES, FOOD, QUENCHERS } from '../../Constants';
 export const Cart = props => {
   console.clear();
   console.log(props);
-
-  const renderList = props.cartLists.items.map((item, index) => {
-    return (
-      <div className="item" key={index}>
-        <div className="right floated content">{item.priceAfterDiscount}</div>
-        <div className="right floated content">{item.totalPrice}</div>
-        <i
+  
+  const renderList2 = props.cartLists.items.map((item, index) => {
+    return (<tr>
+      <td>
+        <h4 class="ui image header">
+          <i
           className={`large middle aligned icon ${
             item.type === BEVERAGES ? 'coffee' : item.type === FOOD ? 'certificate' : 'beer'
           }`}
         />
-        <div className="content">
-          {item.name}
-          <i
+          <div class="content">
+            {item.name}
+        </div>
+      </h4></td>
+      <td>
+        {item.price}
+      </td>
+	  <td>{`${item.discount}%`}</td>
+	  <td><i
             className="large middle aligned icon trash"
             onClick={() => {
               props.deleteItemFromCart(item);
@@ -39,15 +44,10 @@ export const Cart = props => {
               });
             }}
           />
-          <div className="description">
-            {item.qty} * {item.price}
-          </div>
-          <div className="description">
-            Discount: {`${item.discount}%`}
-          </div>
-        </div>
-      </div>
-    );
+		</td>
+		<td>{item.totalPrice}</td>
+		<td>{item.priceAfterDiscount}</td>
+    </tr>);
   });
 
   return (
@@ -56,17 +56,27 @@ export const Cart = props => {
         <h3>Barista Cart</h3>
       </div>
       {props.cartLists.total !== 0 ? (
-        <div className="ui celled list">
-          {renderList}
-          <div className="item" key={new Date().getTime()}>
-            <div className="right floated content">{props.cartLists.total}</div>
-            <div className="content">Total</div>
-          </div>
-          <Link to="/print" class="ui right labeled icon button">
+        <><table class="ui very basic collapsing celled table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Discount</th>
+              <th>Action</th>
+              <th>Price</th>
+              <th>Discounted Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {renderList2}
+          </tbody>
+        </table><div className="item" key={new Date().getTime()}>
+            <div>Total: {props.cartLists.total}</div>
+          </div><Link to="/print" class="ui right labeled icon button">
             <i class="right arrow icon"></i>
             Place order
           </Link>
-        </div>
+          </>
       ) : (
         <div>
           <h1>Cart is empty</h1>
