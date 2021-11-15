@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { addToCart, deleteItemFromCart, removeSingleQtyFromCart } from '../action';
-import { BEVERAGES, FOOD, QUENCHERS } from '../../Constants';
+import { BEVERAGES, FOOD } from '../../Constants';
 
 export const Cart = props => {
   console.clear();

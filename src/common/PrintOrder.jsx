@@ -7,7 +7,7 @@ import { clearCart } from '../cart/action';
 export const PrintOrder = props => {
   useEffect(() => {
     props.clearCart();
-  }, []);
+  });
 
   return (
     <div>
