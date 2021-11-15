@@ -1,8 +1,15 @@
-import { ADD_TO_CART, CLEAR_CART, DELETE_ITEM_CART } from "../../Constants";
+import { ADD_TO_CART, REMOVE_SINGLE_QTY_FROM_CART,CLEAR_CART, DELETE_ITEM_CART } from "../../Constants";
 
 export const addToCart = (item) => {
     return {
         type: ADD_TO_CART,
+        payload:item
+    }
+}
+
+export const removeSingleQtyFromCart = (item) => {
+    return {
+        type: REMOVE_SINGLE_QTY_FROM_CART,
         payload:item
     }
 }
