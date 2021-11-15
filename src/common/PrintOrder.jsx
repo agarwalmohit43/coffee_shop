@@ -11,7 +11,7 @@ export const PrintOrder = props => {
 
   return (
     <div>
-      <h3>Your order will be ready soon</h3>
+      <h3>Your order will be ready soon :)</h3>
     </div>
   );
 };
