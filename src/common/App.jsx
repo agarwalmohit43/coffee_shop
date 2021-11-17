@@ -25,7 +25,7 @@ const App = () => {
               <Route path="/cart" exact component={Cart} />
             </Suspense>
 
-            <Route path="*" component={PageNotFound} />
+            <Route component={PageNotFound} />
           </Switch>
         </div>
       </Router>
