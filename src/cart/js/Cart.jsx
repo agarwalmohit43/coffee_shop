@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { addToCart, deleteItemFromCart, removeSingleQtyFromCart } from '../action';
+import { addToCart, deleteItemFromCart, removeSingleQtyFromCart, clearCart } from '../action';
 import { BEVERAGES, FOOD } from '../../Constants';
 
 export const Cart = props => {
@@ -120,10 +120,17 @@ export const Cart = props => {
             <h3>Total: {props.cartLists.total}</h3>
           </div>
           <br />
-          <Link to="/print" class="ui right labeled icon button">
-            <i class="right arrow icon"></i>
-            Place order
-          </Link>
+
+          <div class="ui buttons">
+            <button class="ui button" onClick={props.clearCart}>
+              Clear cart
+            </button>
+            <div class="or"></div>
+            <Link to="/print" class="ui positive button">
+              Place order
+              <i class="right arrow icon"></i>
+            </Link>
+          </div>
         </>
       ) : (
         <div>
@@ -153,6 +160,7 @@ const mapDispatchToProps = {
   deleteItemFromCart,
   addToCart,
   removeSingleQtyFromCart,
+  clearCart,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);
